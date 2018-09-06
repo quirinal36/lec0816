@@ -25,7 +25,7 @@ public class Calculator implements ActionListener {
 		frame.setBounds(200, 200, 500, 500);
 		frame.setVisible(true);
 		
-		init(frame);
+		// init(frame);
 	}
 	
 	public void init(JFrame root) {

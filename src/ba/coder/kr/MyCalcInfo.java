@@ -40,6 +40,7 @@ public class MyCalcInfo {
 	}
 	
 	public double add() {
-		return (double) input1 + input2;
+		result = (double) input1 + input2;
+		return this.result;
 	}
 }
