@@ -1,7 +1,5 @@
 package ba.coder.kr.swing;
 
-import java.io.InputStream;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
