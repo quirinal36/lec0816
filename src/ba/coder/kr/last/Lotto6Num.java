@@ -31,7 +31,6 @@ public class Lotto6Num {
 				System.out.printf(",\t",lotteries.get(i));
 			}
 		}
-		
 		System.out.println();
 	}
 	
