@@ -15,7 +15,7 @@ public class Contraction {
 	}
 	
 	public static void main(String[] args) {
-		int number=123;
+		int number=1234567;
 		
 		int value=sumEach(number);
 		

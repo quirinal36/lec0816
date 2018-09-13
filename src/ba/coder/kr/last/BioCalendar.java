@@ -6,6 +6,8 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.swing.JOptionPane;
+
 /**
  * https://ko.wikipedia.org/wiki/바이오리듬
  * 
@@ -18,11 +20,15 @@ import java.time.format.DateTimeFormatter;
  */
 public class BioCalendar {
 	public final static String TIME_ZONE = "Asia/Seoul";
+	
+	private static final String DATE_FORMAT = "yyyy-MM-dd";
+	
 	// 상수, 상수값은 변경할 수 없다.
 	public static final int PHYSICAL = 23;     // 상수(개발자 정의)
 	
 	public static void main(String[] args) {
 		int index=PHYSICAL;                  // 상수값을 변수에 대입
+		
 		int days= myDays("1986-04-10");
 		
 		System.out.println("days : "+days);
@@ -32,16 +38,26 @@ public class BioCalendar {
 		System.out.printf("나의 신체지수 %.2f입니다.\n",phyval * 100);
 	}
 	
-	private static final String DATE_FORMAT = "yyyy-MM-dd";
-	
+	/**
+	 * 
+	 * @param birth
+	 * @return
+	 */
 	public static int myDays(String birth) {
-//		System.out.println(current.toString());
+		birth = JOptionPane.showInputDialog("생년월일을 yyyy-MM-dd 형태로 입력: ");
 		LocalDate birthDate = LocalDate.parse(birth, DateTimeFormatter.ofPattern(DATE_FORMAT));
 		
+		// 현재 시간 (milli second 까지)
 		ZonedDateTime current = ZonedDateTime.now(ZoneId.of(TIME_ZONE));
+		// 내가 태어난 시간 ( 00 시 00 분 00 초)를 기준
 		ZonedDateTime birthTime = ZonedDateTime.of(birthDate.getYear(), birthDate.getMonthValue(), birthDate.getDayOfMonth(), 0,0,0,0,  ZoneId.of(TIME_ZONE));
 		
+		// 시간 차이 계산
 		Duration timeElapsed = Duration.between(birthTime, current);
+		
+		// 일 , 시간, 분 을 구할 수 있음.
 		return (int) timeElapsed.toDays();
+//		return (int) timeElapsed.toHours();
+//		return (int) timeElapsed.toMinutes();
 	}
 }
