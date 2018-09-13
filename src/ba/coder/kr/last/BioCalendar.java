@@ -2,7 +2,6 @@ package ba.coder.kr.last;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,9 +35,10 @@ public class BioCalendar {
 	private static final String DATE_FORMAT = "yyyy-MM-dd";
 	
 	public static int myDays(String birth) {
-		ZonedDateTime current = ZonedDateTime.now(ZoneId.of(TIME_ZONE));
 //		System.out.println(current.toString());
 		LocalDate birthDate = LocalDate.parse(birth, DateTimeFormatter.ofPattern(DATE_FORMAT));
+		
+		ZonedDateTime current = ZonedDateTime.now(ZoneId.of(TIME_ZONE));
 		ZonedDateTime birthTime = ZonedDateTime.of(birthDate.getYear(), birthDate.getMonthValue(), birthDate.getDayOfMonth(), 0,0,0,0,  ZoneId.of(TIME_ZONE));
 		
 		Duration timeElapsed = Duration.between(birthTime, current);
