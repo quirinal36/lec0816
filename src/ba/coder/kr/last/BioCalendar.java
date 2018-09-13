@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * 
  * 바이오리듬을 계산하기 위해서는 생년월일로부터 알고자 하는 날까지 총 살아온 날을 세어야만 한다. 
  * 이 생존일수를 days 라고 할 때 각각의 주기 그래프는 사인그래프로 그릴 수 있다.
- * 신체 : sin(2 * PI * days / 23 )
+ * 신체 : sin(2 * PI * days / 23 ) * 100
  * 
  * @author Lee
  *
@@ -28,13 +28,12 @@ public class BioCalendar {
 	public static final int PHYSICAL = 23;     // 상수(개발자 정의)
 	
 	public static void main(String[] args) {
-		int index=PHYSICAL;                  // 상수값을 변수에 대입
 		
 		int days= myDays("19860410");
 		
 		System.out.println("days : "+days);
 		
-		double phyval = Math.sin( 2 * days * Math.PI / index );
+		double phyval = Math.sin( 2 * days * Math.PI / PHYSICAL );
 		
 		System.out.printf("나의 신체지수 %.2f입니다.\n",phyval * 100);
 		
@@ -49,7 +48,8 @@ public class BioCalendar {
 		System.out.println("-----태어난지-----");
 		Period period = Period.between(birthDate, current);
 		System.out.printf("%d 개월 지났습니다,\t", (period.getMonths() + period.getYears()*12));
-		System.out.printf("%d 년 지났습니다" , period.getYears());
+		System.out.printf("%d 년 지났습니다\t" , period.getYears());
+		System.out.printf("%d 일 지났습니다", period.getDays());
 	}
 	/**
 	 * 
